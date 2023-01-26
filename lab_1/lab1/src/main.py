@@ -9,5 +9,5 @@ async def read_main():
 @app.get("/hello/")
 async def read_name(name: str | None = None):
     if not name:
-        raise HTTPException(status_code=400, detail="Name must be specified, please type /home/?name={name}")
+        raise HTTPException(status_code=400, detail="Name must be specified, please type /hello/?name={name}")
     return {"message": f"Hello {name}"}
