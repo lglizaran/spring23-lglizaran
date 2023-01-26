@@ -10,17 +10,17 @@ def test_read_main():
     assert response.json() == {'detail': 'Not Implemented'} # check response
 
 def test_hello():
-    response = client.get("/hello/", params={"name": "foo"})
+    response = client.get("/hello", params={"name": "foo"})
     assert response.status_code == 200
     assert response.json() == {"message": "Hello foo"}
 
 def test_hello_bad():
-    response = client.get("/hello/")
+    response = client.get("/hello")
     assert response.status_code == 400
-    assert response.json() == {'detail': 'Name must be specified, please type /home/?name={name}'}
+    assert response.json() == {'detail': 'Name must be specified, please type /hello?name={name}'}
 
 def test_docs():
-    response = client.get("/docs/")
+    response = client.get("/docs")
     assert response.status_code == 200
     # assert response.json() == {"message": "Hello foo"}
 

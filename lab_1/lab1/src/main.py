@@ -6,7 +6,7 @@ app = FastAPI()
 async def read_main():
     raise HTTPException(status_code=501)
 
-@app.get("/hello/")
+@app.get("/hello")
 async def read_name(name: str | None = None):
     if not name:
         raise HTTPException(status_code=400, detail="Name must be specified, please type /hello/?name={name}")
