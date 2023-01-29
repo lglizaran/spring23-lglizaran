@@ -11,3 +11,8 @@ async def read_name(name: str | None = None):
     if not name:
         raise HTTPException(status_code=400, detail="Name must be specified, please type /hello/?name={name}")
     return {"message": f"Hello {name}"}
+
+# health check to assure app is up
+@app.get('/healthcheck')
+def perform_healthcheck():
+    return {'healthcheck': 'Everything OK!'}
