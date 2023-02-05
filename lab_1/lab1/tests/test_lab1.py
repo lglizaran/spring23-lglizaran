@@ -10,9 +10,10 @@ def test_read_main():
     assert response.json() == {'detail': 'Not Implemented'} # check response
 
 def test_hello():
-    response = client.get("/hello", params={"name": "foo"})
-    assert response.status_code == 200
-    assert response.json() == {"message": "Hello foo"}
+    for name in ['Luis',1, '10','None']:
+        response = client.get("/hello", params={"name": name})
+        assert response.status_code == 200
+        assert response.json() == {"message": f"Hello {name}"}
 
 def test_hello_bad():
     response = client.get("/hello")
@@ -22,9 +23,7 @@ def test_hello_bad():
 def test_docs():
     response = client.get("/docs")
     assert response.status_code == 200
-    # assert response.json() == {"message": "Hello foo"}
 
 def test_openapi_json():
     response = client.get("/openapi.json")
     assert response.status_code == 200
-    # assert response.json() == {"message": "Hello foo"}
